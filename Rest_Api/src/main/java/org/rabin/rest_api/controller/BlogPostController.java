@@ -53,38 +53,7 @@ public class BlogPostController {
         return ResponseEntity.noContent().build();
     }
 
-    /*@PostMapping("/")
-    public ResponseEntity<String> createBlog(@RequestParam("file") MultipartFile file,
-                                             @RequestParam("title") String title,
-                                             @RequestParam("content") String content,
-                                             @RequestParam("userId") Long userId) throws IOException {
 
-        // Ensure the directory exists
-        String uploadDir = "uploads/";
-        File uploadDirFile = new File(uploadDir);
-        if (!uploadDirFile.exists()) {
-            uploadDirFile.mkdirs();
-        }
-
-        // Save the file to the uploads directory
-        String filename = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        File uploadFile = new File(uploadDir + filename);
-        file.transferTo(uploadFile);
-
-        // Create the blog post object
-        BlogPost blog = new BlogPost();
-        blog.setTitle(title);
-        blog.setContent(content);
-        blog.setThumbnail(uploadDir + filename);
-
-        // Get the user and set it on the blog post
-        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        blog.setUser(user);
-
-        // Save and return the blog post
-        blogPostService.createBlogPost(blog);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Blog post created successfully!");
-    }*/
 
     @PostMapping("/")
     public ResponseEntity<String> createBlog(@RequestParam("file") MultipartFile file,

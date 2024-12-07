@@ -17,6 +17,7 @@ public class SecurityConfig {
         http
                 .csrf().disable() // Disable CSRF for simplicity; enable it in production
                 .authorizeHttpRequests()
+                .requestMatchers("/posts/**").permitAll() // Requires authentication
                 .requestMatchers("/auth/**").permitAll() // Allow access to authentication endpoints
                 .anyRequest().authenticated() // Require authentication for all other requests
                 .and()

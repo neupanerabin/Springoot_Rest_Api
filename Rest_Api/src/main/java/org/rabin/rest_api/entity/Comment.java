@@ -6,6 +6,7 @@ package org.rabin.rest_api.entity;
  */
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore  // This prevents the Blog entity from being serialized in the response
     private User commenter;
 
     @ManyToOne
